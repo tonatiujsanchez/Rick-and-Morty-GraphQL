@@ -1,0 +1,88 @@
+.buscar{
+    height: 30rem;
+    background: linear-gradient( rgba(60, 62, 68, 0.6), rgba(60, 62, 68, 0.6) ), url('../../../assets/img/bg-hero.jpg');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+}
+.buscar__container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buscar__form{
+    max-width: 90%;
+    width: 500px;
+    display: flex;
+}
+.buscar__input{
+    border: rgba(60, 62, 68, 0.6);
+    padding: 10px 15px;
+    outline: none;
+    flex-grow: 1;
+    border-radius: 4px 0 0 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: rgb(60, 60, 60);
+    font-size: 16px;
+}
+.buscar__btn{
+    background: #242464;
+    color: #FFF;
+}
+.buscar__btn:hover{
+    background: #202097;
+}
+
+/* Personajes */
+.personajes__container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 5rem auto;
+    gap: 2rem;
+}
+.personajes__content{
+    display: flex;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+.personajes__img{
+    max-width: 220px;
+    font-size: 0;
+}
+.personajes__data{
+    background-color: #2E2E43;
+    color: #FFF;
+    padding: 1rem 2rem;
+}
+.personajes__nombre{
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+}
+.personajes__status{
+    margin-bottom: 1rem;
+}
+.personajes__circle{
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    background: rgb(99, 99, 99);
+}
+.personajes__circle.alive{
+    background: #02e202;
+}
+.personajes__circle.dead{
+    background: red;
+}
+.personajes__first{
+    margin-bottom: 1rem;
+}
+.personajes__first p:first-child,
+.personajes__last p:first-child{
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 0.3rem;
+}

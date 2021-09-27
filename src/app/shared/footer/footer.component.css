@@ -1,0 +1,18 @@
+.footer{
+    background: #222238;
+    padding: 2rem 0;
+}
+.nav__list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+}
+.nav__link{
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+}
+.nav__link:hover,
+.nav__link.active{
+    color: #FFF;
+}
