@@ -1,0 +1,28 @@
+span{
+    font-weight: 600;
+}
+.about{
+    text-align: center;
+    margin: 40px auto;
+}
+.about__title{
+    font-size: 32px;
+    margin-bottom: 8px;
+    color: #161F4D;
+
+}
+.about__img{
+    margin: auto;
+    max-width: 500px;
+    margin-bottom: 24px;
+}
+.about__desc{
+    margin: auto;
+    max-width: 650px;
+    text-align: center;
+    margin-bottom: 32px;
+}
+.about__copy{
+    text-align: center;
+    margin-bottom: 32px;
+}

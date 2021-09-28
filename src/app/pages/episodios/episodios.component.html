@@ -1,1 +1,12 @@
-<p>episodios works!</p>
+<section class="episodios">
+    <h1 class="episodios__title">Episodios</h1>
+    <div class="container">
+        <ul class="episodios__list">
+            <li *ngFor="let episode of episodes$ | async; let idx = index" class="episodio">
+                <span class="episodio__idx">{{ idx + 1 }}</span>
+                <span class="episodio__episode">{{ episode.episode }}</span> - 
+                <span class="episodio__name">{{ episode.name }}</span>
+            </li>
+        </ul>
+    </div>
+</section>
