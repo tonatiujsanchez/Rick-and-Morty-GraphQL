@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CharactersResult } from '../interfaces/data.interface';
-
+import { ToastrService } from 'ngx-toastr';
 
 const MY_FAVORITES  = 'myfovorites';
 @Injectable({
@@ -13,7 +13,9 @@ export class FavoritosService {
   charactersFavorites$ = this.charactersFavoritesSubject.asObservable();
 
 
-  constructor() { 
+  constructor(
+    private toastr: ToastrService
+  ) { 
     this.initialStorage();
   }
 
@@ -58,8 +60,16 @@ export class FavoritosService {
       localStorage.setItem( MY_FAVORITES, JSON.stringify( [...favoritos, favorito] ) )
       this.charactersFavoritesSubject.next( [...favoritos, favorito] );
 
+      // Toast
+      this.toastr.success('Se agrego a tus Favoritos ', favorito.name, {
+        timeOut: 1000
+      });
+
     } catch (error) {
-      console.error( 'Error al guardar el favorito en el Local Storage.', error ); 
+      console.error( 'Error al guardar el favorito en el Local Storage.', error );
+      this.toastr.error('Error al guardar el favorito en el Local Storage.', 'Hubo un error', {
+        timeOut: 3000
+      });
     } 
   }
 
@@ -69,9 +79,17 @@ export class FavoritosService {
       const favoritosFilter: CharactersResult[] = favoritos.filter( fav => fav.id !== favorito.id );
       localStorage.setItem( MY_FAVORITES, JSON.stringify( favoritosFilter ) );
       this.charactersFavoritesSubject.next( [...favoritosFilter] );
-      
+
+      // Toast
+      this.toastr.warning('Se removio de tus Favoritos ', favorito.name, {
+        timeOut: 1000
+      });
+
     } catch (error) {
       console.error( 'Error al aliminar el favorito en el Local Storage.', error ); 
+      this.toastr.error('Error al aliminar el favorito en el Local Storage.', 'Hubo un error', {
+        timeOut: 3000
+      });
     }
 
   }
