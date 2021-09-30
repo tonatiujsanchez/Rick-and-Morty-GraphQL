@@ -1,0 +1,66 @@
+.personajes__content{
+    display: flex;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+.personajes__img{
+    max-width: 220px;
+    font-size: 0;
+    cursor: pointer;
+}
+.personajes__data{
+    background-color: #2E2E43;
+    color: #FFF;
+    padding: 1rem 1rem;
+    flex-grow: 1;
+}
+.personajes__nombre{
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+    color: #FFF;
+    cursor: pointer;
+}
+.personajes__nombre:hover{
+    color: #E9C962;
+
+}
+.personajes__status{
+    margin-bottom: 1rem;
+}
+.personajes__circle{
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    background: rgb(99, 99, 99);
+}
+.personajes__circle.alive{
+    background: #02e202;
+}
+.personajes__circle.dead{
+    background: red;
+}
+.personajes__first{
+    margin-bottom: 1rem;
+}
+.personajes__first p:first-child,
+.personajes__last p:first-child{
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 0.3rem;
+}
+
+/*  */
+.personaje__head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.heart{
+    font-size: 24px;
+    cursor: pointer;
+}
+.heart-active{
+    color: #E9C962;
+}

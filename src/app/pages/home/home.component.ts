@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor(
-    private dataSvc: DataService
+    private dataSvc: DataService,
   ) {
     this.formBuscar = new FormGroup({
       queryBuscar: new FormControl('',[
@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
 
   
   ngOnInit(): void {
+    this.dataSvc.getData();
   }
 
 

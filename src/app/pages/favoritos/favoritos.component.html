@@ -1,1 +1,7 @@
-<p>favoritos works!</p>
+<section class="favoritos">
+    <div class="container">
+        <div class="favoritos__container">
+            <app-card-personaje *ngFor="let favorite of favorites$ | async" [personaje]="favorite" class="card-personaje"></app-card-personaje>
+        </div>
+    </div>
+</section>

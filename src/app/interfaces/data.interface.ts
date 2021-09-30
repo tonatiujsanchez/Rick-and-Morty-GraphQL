@@ -17,10 +17,11 @@ export interface CharactersResult {
     status:   Status;
     species:  Species;
     gender:   Gender;
+    created: string;
     origin:   Location;
     location: Location;
     image:    string;
-    isFovorite?: boolean
+    isFavorite?: boolean
 }
 
 export enum Gender {

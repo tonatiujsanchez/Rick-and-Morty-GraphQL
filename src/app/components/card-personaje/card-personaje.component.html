@@ -1,0 +1,28 @@
+<div class="personajes__content">
+    <a [routerLink]="['/personaje', personaje.id]" >
+        <figure class="personajes__img">
+            <img rel="preload" as="image" [src]="personaje.image" [alt]="personaje.name">
+        </figure>
+    </a>
+    <div class="personajes__data">
+        <div class="personaje__head">
+            <a class="personajes__nombre"  [routerLink]="['/personaje', personaje.id]">
+                {{ personaje.name }}
+            </a>
+            <span (click)="favoriteToggle()" *ngIf="!personaje.isFavorite"><i class='bx bx-heart heart heart-inactive'></i></span>
+            <span (click)="favoriteToggle()" *ngIf="personaje.isFavorite"><i class='bx bxs-heart heart heart-active' ></i></span>
+        </div>
+        <div class="personajes__status">
+            <span class="personajes__circle" [class]="personaje.status | lowercase"></span>
+            <span>{{ personaje.status }}</span> - <span>{{ personaje.species }}</span>
+        </div>
+        <div class="personajes__first">
+            <p>First seen in:</p>
+            <p>{{ personaje.location.name }}</p>
+        </div>
+        <div class="personajes__last">
+            <p>Created:</p>
+            <p>{{ personaje.created | date }}</p>
+        </div>
+    </div>  
+</div>

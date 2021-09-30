@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FavoritosComponent } from './favoritos.component';
 import { FovoritosRoutingModule } from './favoritos-routing.module';
+import { ComponentsModule } from '../../components/components.module';
 
 
 
@@ -11,8 +12,8 @@ import { FovoritosRoutingModule } from './favoritos-routing.module';
   ],
   imports: [
     CommonModule,
-    FovoritosRoutingModule
-    
+    FovoritosRoutingModule,
+    ComponentsModule
   ]
 })
 export class FavoritosModule { }
