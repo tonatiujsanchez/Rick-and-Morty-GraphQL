@@ -1,0 +1,19 @@
+.btn-up{
+    position: fixed;
+    right: 1rem;
+    bottom: 3rem;
+
+    display: grid;
+    place-content: center;
+    border: none;
+    width: 48px;
+    height: 48px;
+    background: #009A3D;
+    color: #FFF;
+    border-radius: 50%;
+    font-size: 2.2rem;
+    cursor: pointer;
+}
+.btn-up:active{
+    transform: scale(0.9);
+}

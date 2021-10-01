@@ -2,6 +2,7 @@
 
 <main>
     <router-outlet></router-outlet>
+    <button *ngIf="showButton" (click)="onClick()" class="btn-up"><i class='bx bx-chevron-up'></i></button>
 </main>
 
 <app-footer></app-footer>

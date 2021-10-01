@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
-import { HomeRoutingModule } from './home-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { HomeRoutingModule } from './home-routing.module';
 import { ComponentsModule } from '../../components/components.module';
 
-
+import { HomeComponent } from './home.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ComponentsModule } from '../../components/components.module';
     CommonModule,
     HomeRoutingModule,
     ReactiveFormsModule,
+    InfiniteScrollModule,
     ComponentsModule
   ]
 })

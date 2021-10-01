@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   formBuscar: FormGroup;
 
   characters$ = this.dataSvc.characters$;
-
+  private pageNum: number = 1;
 
   constructor(
     private dataSvc: DataService,
@@ -29,14 +29,17 @@ export class HomeComponent implements OnInit {
     this.dataSvc.getData();
   }
 
-
-
   trimVelidator( control: any ){
     if( control.value.trim() === '' ){
       return { trimVelidator: 'En necesario un termino para buscar' };
     }else{
       return null;
     }
+  }
+
+  onScroll() {
+    this.pageNum++;
+    this.dataSvc.getNetxPage( this.pageNum );
   }
 
 

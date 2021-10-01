@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from "apollo-angular";
 import { BehaviorSubject } from 'rxjs';
-import { take, tap } from "rxjs/operators";
+import { pluck, take, tap, withLatestFrom } from "rxjs/operators";
 import { CharactersResult, EpisodesResult, Data } from '../interfaces/data.interface';
 import { FavoritosService } from './favoritos.service';
 
@@ -46,10 +46,44 @@ export class DataService {
   constructor(
     private apollo: Apollo,
     private favoritosSvc: FavoritosService
-  ) { 
-    // this.getData();
-  }
+  ) { }
 
+
+  getNetxPage( pageNum: number ){    
+    const QUERY_BY_PAGE = gql`
+          {
+            characters(page: ${pageNum}) {
+              results {
+                id
+                name
+                status
+                species
+                gender
+                created
+                origin{
+                  name
+                }
+                location{
+                  name
+                }
+                image
+              }
+            }
+          }`
+    
+          this.apollo.watchQuery<any>({
+            query: QUERY_BY_PAGE
+          }).valueChanges.pipe(
+            take(1),
+            pluck( 'data', 'characters' ),
+            withLatestFrom(this.characters$),
+            tap(
+              ([apiResponse, characters])=>{
+                this.parseNewData([ ...characters!, ...apiResponse.results  ])
+              }
+            )
+          ).subscribe();
+  }
 
 
   getData():void{
@@ -72,7 +106,6 @@ export class DataService {
 
     const newData:CharactersResult[] = characters.map( char =>{
       const isFav = !! favoritos.find( fav => fav.id === char.id );
-      // char.isFavorite = isFav;
       return {...char, isFavorite: isFav}
     });
 

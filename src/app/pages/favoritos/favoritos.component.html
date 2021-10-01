@@ -1,5 +1,9 @@
 <section class="favoritos">
     <div class="container">
+        <div class="sin-favoritos" *ngIf="(favorites$ | async | json).length <= 2">
+            <p class="sin-favoritos__title">No has agregado ningun favorito</p>
+            <img class="sin-favoritos__img" src="../../../assets/img/bg-favoritos.png" alt="Rick and Morty" title="Rick and Morty" rel="preload" as="image">
+        </div>
         <div class="favoritos__container">
             <app-card-personaje *ngFor="let favorite of favorites$ | async" [personaje]="favorite" class="card-personaje"></app-card-personaje>
         </div>
