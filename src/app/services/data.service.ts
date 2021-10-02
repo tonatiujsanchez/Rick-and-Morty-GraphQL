@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { pluck, take, tap, withLatestFrom } from "rxjs/operators";
 import { CharactersResult, EpisodesResult, Data } from '../interfaces/data.interface';
 import { FavoritosService } from './favoritos.service';
+import { SpinnerService } from './spinner.service';
 
 const QUERY = gql`
 {
@@ -45,8 +46,10 @@ export class DataService {
 
   constructor(
     private apollo: Apollo,
-    private favoritosSvc: FavoritosService
-  ) { }
+    private favoritosSvc: FavoritosService,
+    private spinnerSvc: SpinnerService
+  ) {
+   }
 
 
   getNetxPage( pageNum: number ){    

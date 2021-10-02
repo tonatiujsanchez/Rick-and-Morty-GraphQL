@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataService } from '../../services/data.service';
+import { SpinnerService } from '../../services/spinner.service';
 
 @Component({
   selector: 'app-home',
@@ -11,21 +12,26 @@ export class HomeComponent implements OnInit {
   formBuscar: FormGroup;
 
   characters$ = this.dataSvc.characters$;
+  isLoading = this.spinnerSvc.isLoading$;
+  
   private pageNum: number = 1;
 
   constructor(
     private dataSvc: DataService,
+    private spinnerSvc: SpinnerService
   ) {
+    
     this.formBuscar = new FormGroup({
       queryBuscar: new FormControl('',[
         Validators.required,
         this.trimVelidator
       ])
-    })
+    })    
    }
 
   
   ngOnInit(): void {
+
     this.dataSvc.getData();
   }
 
@@ -38,8 +44,11 @@ export class HomeComponent implements OnInit {
   }
 
   onScroll() {
+
     this.pageNum++;
     this.dataSvc.getNetxPage( this.pageNum );
+
+    
   }
 
 

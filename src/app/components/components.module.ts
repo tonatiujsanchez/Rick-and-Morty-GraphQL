@@ -4,15 +4,18 @@ import { CommonModule } from '@angular/common';
 
 import { CardPersonajeComponent } from './card-personaje/card-personaje.component';
 import { RouterModule } from '@angular/router';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 
 @NgModule({
   declarations: [
-    CardPersonajeComponent
+    CardPersonajeComponent,
+    SpinnerComponent
   ],
   exports: [
-    CardPersonajeComponent
+    CardPersonajeComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,

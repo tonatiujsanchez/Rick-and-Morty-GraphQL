@@ -11,7 +11,6 @@ export class AppComponent {
   showButton: boolean = false;
 
   constructor( @Inject(DOCUMENT) private document: Document ){
-    console.log('Hola');
     
   }
 

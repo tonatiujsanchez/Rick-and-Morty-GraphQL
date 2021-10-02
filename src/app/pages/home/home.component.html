@@ -7,6 +7,10 @@
     </div>
 </section>
 <section class="personajes search-results" infiniteScroll (scrolled)="onScroll()">
+    
+    <ng-container *ngIf="isLoading | async">
+        <app-spinner></app-spinner>
+    </ng-container>
     <div class="personajes__container container">
         <app-card-personaje *ngFor="let personaje of characters$ | async" [personaje]="personaje" class="card-personaje"></app-card-personaje>
     </div>

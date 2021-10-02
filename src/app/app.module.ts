@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GraphQLModule } from './graphql.module';
 
 import { ToastrModule } from 'ngx-toastr';
@@ -11,6 +11,9 @@ import { AppComponent } from './app.component';
 
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
+
+import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { FooterComponent } from './shared/footer/footer.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
