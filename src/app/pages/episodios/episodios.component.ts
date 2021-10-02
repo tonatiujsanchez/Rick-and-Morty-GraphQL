@@ -16,6 +16,7 @@ export class EpisodiosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.dataSvc.getData();
   }
 
 }

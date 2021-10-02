@@ -1,0 +1,88 @@
+.personaje{
+    margin: 40px 0;
+}
+.personaje__content{
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+.detalles{
+    width: 40%;
+}
+.personaje__titulo{
+    text-align: center;   
+    margin-bottom: 2.5rem;
+    font-size: 2rem;
+}
+.info{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.info__desc{
+    font-weight: 600;
+    margin-right: 1rem;
+}
+.info .btn{
+    background: rgb(211, 0, 0);
+    color: white;
+    border-radius: 0.3rem;
+}
+.info .btn:hover{
+    background: rgba(238, 3, 3, 0.8);
+}
+.info .btn:active{
+    transform: scale(0.96);
+}
+
+.status{
+    font-size: 1rem;
+}
+.status .circle{
+    display: inline-block;
+    width: 0.7rem;
+    height: 0.7rem;
+    background: gray;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+}
+.status .circle.alive{
+    background: #0bc90b;
+}
+.status .circle.dead{
+    background: red;
+}
+
+
+/* Episodios */
+.episodios{
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+}
+.episodios__titulo{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.episodios__item{
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    margin-bottom: 2rem;
+    padding: 1rem 2rem;
+}
+.episodio__idx{
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+
+@media screen and (max-width: 768px) {
+    .detalles{
+        width: 100%;
+    }
+    .info{
+        width: 100%;
+    }
+}

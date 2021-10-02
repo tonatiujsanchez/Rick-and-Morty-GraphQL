@@ -1,1 +1,49 @@
-<p>personaje works!</p>
+<article class="personaje" *ngIf="personaje">
+    <section class="personaje__container container">
+        <h1 class="personaje__titulo">{{ personaje.name }}</h1>
+        <div class="personaje__content">
+            <div class="detalles">
+                <figure class="detalles__foto">
+                    <img [src]="personaje.image" [alt]="personaje.name">
+                </figure>
+            </div>
+            <div class="info">
+                <div class="status">
+                    <span class="circle" [class]="personaje.status | lowercase"></span>
+                    <span>{{ personaje.status }}</span> - 
+                    <span>{{ personaje.species }}</span>
+                </div>
+                <div class="info__item">
+                    <span class="info__desc">Género:</span>
+                    <span>{{ personaje.gender }}</span>
+                </div>
+                <div class="info__item">
+                    <span class="info__desc">Orígen:</span>
+                    <span>{{ personaje.origin.name }}</span>
+                </div>
+                <div class="info__item">
+                    <span class="info__desc">Creado:</span>
+                    <span>{{ personaje.created | date }}</span>
+                </div>
+                <div class="info__item">
+                    <span class="info__desc">Localización:</span>
+                    <span>{{ personaje.location.name }}</span>
+                </div>
+                <div class="info__item">
+                    <button class="btn" (click)="regresar()"> Regresar </button>
+                </div>
+            </div>
+        </div>
+        <div class="episodios">
+            <div class="episodios__content container">
+                <h2 class="episodios__titulo">Episodios</h2>
+                <ul class="episodios__list" >
+                    <li class="episodios__item" *ngFor="let episodio of personaje.episode; let idx = index">
+                        <span class="episodio__idx">{{ idx + 1 }} - </span>
+                        <span class="episodio__name">{{ episodio.name }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</article>

@@ -47,10 +47,38 @@ export class DataService {
   constructor(
     private apollo: Apollo,
     private favoritosSvc: FavoritosService,
-    private spinnerSvc: SpinnerService
   ) {
    }
 
+   getPersonaje( idPersonaje:number ){
+    const QUERY_BY_ID = gql`
+          {
+            character(id: ${idPersonaje}) {
+              id
+              name
+              status
+              species
+              gender
+              created
+              episode{
+                name
+              }
+              origin{
+                name
+              }
+              location{
+                name
+              }
+              image
+            }
+          }`
+
+    return this.apollo.watchQuery<any>({
+      query: QUERY_BY_ID
+    }).valueChanges.pipe(
+      take(1)
+    );
+   }
 
   getNetxPage( pageNum: number ){    
     const QUERY_BY_PAGE = gql`
