@@ -22,7 +22,7 @@ import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
     FooterComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     GraphQLModule,
     HttpClientModule,
