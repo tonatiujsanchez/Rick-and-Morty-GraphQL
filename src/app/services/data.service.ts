@@ -143,5 +143,41 @@ export class DataService {
     this.charactersSubject.next( [...newData] );
   }
 
+  filterData( valueToSearch: string ): void{
+    const QUERY_BY_NAME = gql`
+    query($name: String){
+      characters( filter: { name: $name } ){
+        info{
+          count
+        }
+        results {
+          id
+          name
+          status
+          species
+          gender
+          created
+          origin{
+            name
+          }
+          location{
+            name
+          }
+          image
+        }
+      }
+    }`
+
+    this.apollo.watchQuery<Data>({
+      query: QUERY_BY_NAME,
+      variables:{
+        name: valueToSearch
+      }
+    }).valueChanges.pipe(
+      take(1),
+      tap( ({data:{ characters, episodes }}) => this.parseNewData([ ...characters.results ]) )
+    ).subscribe();
+  }
+
 
 }

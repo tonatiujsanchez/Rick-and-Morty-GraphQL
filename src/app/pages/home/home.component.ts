@@ -53,7 +53,12 @@ export class HomeComponent implements OnInit {
 
 
   buscar(){
-    console.log( this.formBuscar.controls.queryBuscar.value.trim() );
+    if(this.formBuscar.controls.queryBuscar.value.trim() === ''){
+      return;
+    }
+    this.dataSvc.filterData(this.formBuscar.controls.queryBuscar.value.trim());
+    // console.log( this.formBuscar.controls.queryBuscar.value.trim() );
+
   }
 
 
