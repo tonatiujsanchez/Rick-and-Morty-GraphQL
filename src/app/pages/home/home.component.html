@@ -2,16 +2,24 @@
     <div class="buscar__container container">
         <form class="buscar__form" [formGroup]="formBuscar" (ngSubmit)="buscar()">
             <input type="text" class="buscar__input" placeholder="Buscar" formControlName="queryBuscar">
-            <button class="btn buscar__btn" [disabled]="!formBuscar.valid">Buscar</button>
+            <button class="btn buscar__btn" [disabled]="!formBuscar.valid" *ngIf="!wasASearch">Buscar</button>
+            <button class="btn buscar__btn" *ngIf="wasASearch" (click)="limpiar()" >Limpiar</button>
         </form>
     </div>
 </section>
 <section class="personajes search-results" infiniteScroll (scrolled)="onScroll()">
-    
-    <div class="personajes__container container">
-        <app-card-personaje *ngFor="let personaje of characters$ | async" [personaje]="personaje" class="card-personaje"></app-card-personaje>
-    </div>
-    <ng-container *ngIf="isLoading | async">
-        <app-spinner></app-spinner>
+    <ng-container *ngIf="characters$ | async as characters; else noResult">
+        <div class="personajes__container container">
+            <app-card-personaje *ngFor="let personaje of characters" [personaje]="personaje" class="card-personaje"></app-card-personaje>
+        </div>
+        <ng-container *ngIf="isLoading | async">
+            <app-spinner></app-spinner>
+        </ng-container>
     </ng-container>
+
+    <ng-template #noResult>
+        <div class="sin-resultados">
+            <span>No se encontraron resultados.</span>
+        </div>
+    </ng-template>
 </section>

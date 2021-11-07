@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from "apollo-angular";
 import { BehaviorSubject } from 'rxjs';
-import { pluck, take, tap, withLatestFrom } from "rxjs/operators";
+import { catchError, pluck, take, tap, withLatestFrom, } from "rxjs/operators";
 import { CharactersResult, EpisodesResult, Data } from '../interfaces/data.interface';
 import { FavoritosService } from './favoritos.service';
 import { SpinnerService } from './spinner.service';
@@ -175,7 +175,11 @@ export class DataService {
       }
     }).valueChanges.pipe(
       take(1),
-      tap( ({data:{ characters, episodes }}) => this.parseNewData([ ...characters.results ]) )
+      tap( ({data:{ characters, episodes }}) => this.parseNewData([ ...characters.results ]) ),
+      catchError( (error) =>{
+        this.charactersSubject.next( null );
+        return error;
+      })
     ).subscribe();
   }
 

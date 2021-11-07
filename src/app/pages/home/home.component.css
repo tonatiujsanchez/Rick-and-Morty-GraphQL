@@ -31,7 +31,11 @@
     background: #242464;
     color: #FFF;
 }
-.buscar__btn:hover{
+
+form.ng-invalid .buscar__btn{
+    cursor: default;
+}
+form.ng-valid .buscar__btn{
     background: #202097;
 }
 
@@ -42,4 +46,11 @@
     flex-wrap: wrap;
     margin: 5rem auto;
     gap: 2rem;
+}
+.sin-resultados{
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 15rem;
+    font-size: 2rem;
+    color: #161F4D;
 }

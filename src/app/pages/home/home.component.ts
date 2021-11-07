@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
   characters$ = this.dataSvc.characters$;
   isLoading = this.spinnerSvc.isLoading$;
   
+  wasASearch: boolean = false;
+
   private pageNum: number = 1;
 
   constructor(
@@ -44,7 +46,9 @@ export class HomeComponent implements OnInit {
   }
 
   onScroll() {
-
+    if(this.wasASearch){
+      return;
+    }
     this.pageNum++;
     this.dataSvc.getNetxPage( this.pageNum );
 
@@ -57,8 +61,13 @@ export class HomeComponent implements OnInit {
       return;
     }
     this.dataSvc.filterData(this.formBuscar.controls.queryBuscar.value.trim());
-    // console.log( this.formBuscar.controls.queryBuscar.value.trim() );
+    this.wasASearch = true;
+  }
 
+  limpiar(){
+    this.dataSvc.getData();
+    this.formBuscar.controls.queryBuscar.setValue('');
+    this.wasASearch= false;
   }
 
 
